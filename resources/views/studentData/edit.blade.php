@@ -1,4 +1,4 @@
-{{-- <!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>Title</title>
@@ -11,44 +11,36 @@
   </head>
   <body>
      <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12">
                 <nav class="nav bg-primary">
                     <h4>
                        <a class="nav-link active text-light" href="/">Quotes_Message</a>
                     </h4>
-                    </nav> 
+                     </nav> 
             </div>
         </div>
      </div>
      <div class="container">
-        <div class="row mt-4">
+        <div class="row mt-4 justify-content-center">
             <div class="col-12">
-                <a href="studentData/create" class="btn btn-outline-dark">Your Message</a>
+                <h3 class="text-center bg-secondary text-light">Person Id No{{$student->id}}</h3>
             </div>
         </div>
-     </div>
-     <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Quote_Id</th>
-                <th>Quote_Messages</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($stdview as $detail)
-              <tr>
-                <td scope="row">$loop->$index</td>
-                <td>$$detail->Name</td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <form method="POST" action="/stdData/{{ $student->id }}/update">
+                @csrf
+                @method('put')
+                <div class="form-group">
+                  <label for="">Message</label>
+                  <textarea type="text" name="msg"  class="form-control" rows="10" value="">{{ old('msg' , $student->Message) }} </textarea>
+                  <small id="helpId" class="text-muted">Your Quotes Message</small>
+                </div>
+                <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+            </form>
+            </div>
         </div>
-      </div>
      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -56,4 +48,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
-</html> --}}
+</html>
